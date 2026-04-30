@@ -1,5 +1,5 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ChevronsDown,
@@ -7,6 +7,15 @@ import {
   Eye,
   BadgeCheck,
 } from "lucide-react";
+import { client } from "@/components/sanity-client";
+
+interface TeamMember {
+  _id: string;
+  name: string;
+  position: string;
+  order: number;
+  image: string;
+}
 
 const fadeInProps = {
   initial: { opacity: 0, y: 20 } as const,
@@ -15,15 +24,36 @@ const fadeInProps = {
   transition: { duration: 0.8 }
 };
 
-const staggerContainerProps = {
-  initial: { opacity: 0 } as const,
-  whileInView: { opacity: 1 } as const,
-  viewport: { once: true },
-  transition: { duration: 0.5 }
-};
-
 export default function AboutPage() {
+  const [team, setTeam] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const query = `
+          *[_type == "teamMember"] | order(order asc){
+            _id,
+            name,
+            position,
+            order,
+            "image": photo.asset->url
+          }
+        `;
+        const data = await client.fetch(query);
+        setTeam(data);
+      } catch (err) {
+        console.error("Fetch error:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchTeam();
+  }, []);
+
+
   return (
+
     <div className="min-h-screen bg-background font-sans">
       {/* Hero Section */}
       <header className="relative h-screen w-full flex items-center justify-center overflow-hidden">
@@ -131,7 +161,7 @@ export default function AboutPage() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-16"
+          className="grid grid-cols-1 md:grid-cols-3 md:gap-0 gap-16"
         >
           {[
             {
@@ -150,8 +180,17 @@ export default function AboutPage() {
               desc: "Thi công chuẩn xác và hoàn thiện không gian bằng những món đồ décor thủ công, mang hơi thở cuộc sống vào tác phẩm kiến trúc."
             }
           ].map((step, idx) => (
-            <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative group pt-12 border-t border-white/10 hover:border-secondary transition-colors duration-500">
-              <span className="absolute -top-10 left-0 font-sans text-6xl md:text-8xl text-secondary/10 group-hover:text-secondary/20 transition-colors pointer-events-none">{step.num}</span>
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative group pt-16 md:pr-16 border-t border-white/10 hover:border-secondary transition-colors duration-500"
+            >
+              <span className="absolute -top-24 left-0 font-sans text-6xl md:text-8xl text-secondary/10 group-hover:text-secondary/20 transition-colors pointer-events-none">
+                {step.num}
+              </span>
               <div className="relative z-10 space-y-4">
                 <h4 className="font-sans text-xl md:text-2xl text-on-surface">{step.title}</h4>
                 <p className="font-sans text-on-surface-variant text-sm md:text-base leading-relaxed">{step.desc}</p>
@@ -175,39 +214,30 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
-            {[
-              {
-                role: "Principal Architect",
-                name: "Quốc Tùng",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA0MEBdeLd0n0jrfIfajky5fXbDJBA-Rv5A7Kw_NQaHkwS986MtMr-j2JN4NGYomWU0q3JC6Jp46Ms6yL-Sl7WYbYst315nSHF8F6Ytnex-HLk5BoVL4xIDy-y4i9z3f6MRDJu_wNzecmYpcJpvT1A1VT6MuK9vKurgFko-ODAtUER43fqr9u6y8XGddWFETCoT2A94NqSLHPijeHzdoXVHBotpHNmAqxQQMuB9mSBjN6uHOQKPdqVPkg5LsbB9f30I3punob89dYkU"
-              },
-              {
-                role: "Lead Designer",
-                name: "Thanh Hà",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA_OYFY9RlzuI1JUYtlCkqrmsx0v6HD0QCWYyG3o0jrLTAlhpQwws-OozA8FyOcttxWDk6bNlVif3WWS3HoA5nG7-dQH7kRenDNvXUmxP7_1LwXXLdTk5ULoJe6JmcaFgz-rX59uk8uvnbi6kokiAcu7ls6uxmDgVNEgdC6Banzy8S7Tk7e0hdKqLZAICOVzds7JvoTSGpsRSxdi3m4gCwLEfTQFik9h6LUZJ--nhj95iHIGULlo1sykIjHwbdKs6G3P_35tTmfOswz"
-              },
-              {
-                role: "Operations Manager",
-                name: "Minh Đức",
-                img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCSPJu1mSgs_MQ6G4ellTwzVlQybdXk57eiDSeC6vYRm3lJeIZGwWLMOr950jpw4CRNGBlAXtU1-rPU-lGux-hpzRFEU_QKN1I0MubQFjSvTSho5CwTG9T8ubQJimCy9blGyBfJtJwaTfMnZPXpvrT5sxwETaPuynZBoPqkGPDnf9nXhEfmnII-6pYU7qwcNY2YeUU0veEaq3zYWrOCcBpUK6vf4GDzQUJQl3TJdzPwwpGxzpF4TmFsLaK1fTlBl6IqBEGEjCfmegCB"
-              }
-            ].map((member, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="glass-card overflow-hidden group">
-                <div className="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
-                  <img
-                    src={member.img}
-                    alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="p-8 space-y-2">
-                  <p className="font-sans text-secondary uppercase text-[10px] tracking-[0.3em] font-semibold">{member.role}</p>
-                  <h5 className="font-sans text-2xl text-on-surface">{member.name}</h5>
-                </div>
-              </motion.div>
-            ))}
+            {loading ? (
+              Array.from({ length: 3 }).map((_, i) => (
+                <div key={`skeleton-${i}`} className="glass-card aspect-[3/4] bg-gray-800 animate-pulse rounded-xl" />
+              ))
+            ) : (
+              team.map((member, idx) => (
+                <motion.div key={member._id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="glass-card overflow-hidden group">
+                  <div className="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="p-8 space-y-2">
+                    <p className="font-sans text-secondary uppercase text-[10px] tracking-[0.3em] font-semibold">{member.position}</p>
+                    <h5 className="font-sans text-2xl text-on-surface">{member.name}</h5>
+                  </div>
+                </motion.div>
+              ))
+            )}
           </motion.div>
+
         </div>
       </section>
     </div>
