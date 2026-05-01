@@ -43,7 +43,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <header className="relative w-full h-[70vh] min-h-[600px] overflow-hidden">
+      <section className="relative min-h-screen w-full overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src={post.image}
@@ -63,7 +63,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
           </h1>
           <div className="w-24 h-px bg-secondary mt-12 origin-left" />
         </div>
-      </header>
+      </section>
 
       {/* Article */}
       <article className="relative py-32">

@@ -2,18 +2,20 @@
 
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, MessageSquare, Users, Camera, ChevronDown } from "lucide-react";
+import Image from "next/image";
 
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-background text-on-surface">
       {/* Hero */}
-      <section className="relative h-[70vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img
+          <Image
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdMK8kBEk5ftdKOezCFQlG5Sf5IAw_Yr17nhhGyytTxkZeEzXTOAfPZs4b9wSbFpxXTrJ02sMitxE77CUnrNDiJ6NGhaIDZnRViVy2QgX04_cRWi146d_TAd4E0gsjWJvBZLWD7YDtf2fpFRyQ17WXKGFuwe_bLfIwoyAr4svhjfo_Q9RgisoCZB5r0R-TtdvERYj8x4eLBh_HBy_yUhu3ZRZAzqb3pdLuQ59C6eJovHhRqtDzGwzHAJOalDPqjYV8Al5GxnBWo__s"
             alt="Luxury Interior"
-            className="w-full h-full object-cover grayscale opacity-40"
-            referrerPolicy="no-referrer"
+            fill
+            priority
+            className="object-cover grayscale opacity-40"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background" />
         </div>

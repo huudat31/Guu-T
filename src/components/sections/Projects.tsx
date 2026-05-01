@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { ChevronDown, Plus } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
@@ -38,16 +39,17 @@ export default function Projects({ projects }: { projects: Project[] }) {
         loop={true}
         observer={true}
         observeParents={true}
-        className="h-full w-full"
+        className="absolute inset-0 h-full w-full"
       >
         {projects.map((project) => (
           <SwiperSlide key={project._id} className="relative h-full w-full">
             {/* Background Image */}
             <div className="absolute inset-0">
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
-                className="h-full w-full object-cover brightness-[0.6]"
+                fill
+                className="object-cover brightness-[0.6]"
               />
               <div className="absolute inset-0 bg-gradient-to-l from-black/60 via-transparent to-transparent" />
             </div>

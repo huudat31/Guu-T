@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function ServicesHero() {
   return (
-    <header className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
           className="w-full h-full object-cover"
@@ -35,6 +35,6 @@ export default function ServicesHero() {
           <ChevronDown className="text-secondary w-10 h-10 mx-auto mt-12" strokeWidth={1} />
         </motion.div>
       </motion.div>
-    </header>
+    </section>
   );
 }

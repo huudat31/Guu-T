@@ -52,7 +52,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="min-h-screen bg-surface-dim overflow-x-hidden">
       {/* Hero */}
-      <header className="relative h-screen w-full overflow-hidden">
+      <section className="relative min-h-screen w-full overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src={project.heroImage}
@@ -74,7 +74,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             {project.location}
           </p>
         </div>
-      </header>
+      </section>
 
       {/* Project Info */}
       <section className="py-24 md:py-40 px-6 md:px-20">

@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function AboutHero() {
   return (
-    <header className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-slate-950/40 z-10" />
         <Image
@@ -43,6 +43,6 @@ export default function AboutHero() {
       >
         <ChevronsDown size={40} strokeWidth={1} />
       </motion.div>
-    </header>
+    </section>
   );
 }

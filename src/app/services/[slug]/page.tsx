@@ -28,7 +28,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center overflow-hidden">
+      <section className="relative min-h-screen w-full flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src={service.heroImage}

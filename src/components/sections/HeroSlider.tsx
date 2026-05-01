@@ -4,17 +4,20 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ChevronsDown } from "lucide-react";
 import { IMAGES } from "@/lib/images";
+import Image from "next/image";
 
 export default function HeroSlider() {
   return (
-    <section id="home" className="relative h-screen flex flex-col items-center justify-center text-center overflow-hidden">
+    <section id="home" className="relative h-screen w-full flex flex-col items-center justify-center text-center overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src={IMAGES.hero[0]}
           alt="Luxury Interior"
-          className="w-full h-full object-cover brightness-[0.4]"
+          fill
+          className="object-cover brightness-50"
+          priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-bg" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-bg/80" />
       </div>
 
       <div className="relative z-10 space-y-8 px-6">

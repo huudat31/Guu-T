@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function ProjectHero() {
   return (
-    <header className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-background z-10" />
         <motion.div
@@ -56,6 +56,6 @@ export default function ProjectHero() {
       >
         <ChevronDown className="text-secondary opacity-50" size={32} />
       </motion.div>
-    </header>
+    </section>
   );
 }

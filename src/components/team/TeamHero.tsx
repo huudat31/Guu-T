@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
 export default function TeamHero() {
   return (
-    <header className="relative h-[60vh] w-full flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-slate-950/60 z-10" />
         <Image
@@ -34,6 +35,15 @@ export default function TeamHero() {
           Đội Ngũ Sáng Tạo
         </motion.h1>
       </div>
-    </header>
+
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 text-secondary cursor-pointer"
+        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+      >
+        <ChevronDown size={40} strokeWidth={1} />
+      </motion.div>
+    </section>
   );
 }
