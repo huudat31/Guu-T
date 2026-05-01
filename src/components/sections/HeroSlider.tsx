@@ -41,7 +41,8 @@ export default function HeroSlider() {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-12 z-20 text-brand-gold"
+        className="absolute bottom-12 z-20 text-brand-gold cursor-pointer"
+        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
       >
         <ChevronsDown size={40} strokeWidth={1} />
       </motion.div>

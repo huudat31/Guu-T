@@ -6,15 +6,26 @@ import About from "@/components/sections/About";
 import Projects from "@/components/sections/Projects";
 import Services from "@/components/sections/Services";
 import Partners from "@/components/sections/Partners";
+import { cachedFetch } from "@/components/sanity-client";
 
-export default function Home() {
+export default async function Home() {
+  const projectsQuery = `
+    *[_type == "project"] | order(publishedAt desc)[0...5] {
+      _id,
+      title,
+      "slug": slug.current,
+      "image": heroImage.asset->url
+    }
+  `;
+  const projects = await cachedFetch(projectsQuery);
+
   return (
     <>
       <PopupForm />
       <HeroSlider />
       <Commitment />
       <About />
-      <Projects />
+      <Projects projects={projects} />
       <Services />
       <Partners />
     </>

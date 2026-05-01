@@ -4,12 +4,21 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import { ChevronDown, Plus } from "lucide-react";
-import { IMAGES } from "@/lib/images";
+import Link from "next/link";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-export default function Projects() {
+interface Project {
+  _id: string;
+  title: string;
+  slug: string;
+  image: string;
+}
+
+export default function Projects({ projects }: { projects: Project[] }) {
+  if (!projects || projects.length === 0) return null;
+
   return (
     <section id="projects" className="relative h-screen w-full bg-black overflow-hidden">
       <Swiper
@@ -17,7 +26,7 @@ export default function Projects() {
         effect="fade"
         speed={1000}
         autoplay={{
-          delay: 3000,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -31,12 +40,12 @@ export default function Projects() {
         observeParents={true}
         className="h-full w-full"
       >
-        {IMAGES.projects.map((project, idx) => (
-          <SwiperSlide key={idx} className="relative h-full w-full">
+        {projects.map((project) => (
+          <SwiperSlide key={project._id} className="relative h-full w-full">
             {/* Background Image */}
             <div className="absolute inset-0">
               <img
-                src={project.url}
+                src={project.image}
                 alt={project.title}
                 className="h-full w-full object-cover brightness-[0.6]"
               />
@@ -45,17 +54,20 @@ export default function Projects() {
 
             {/* Content Overlay */}
             <div className="relative h-full max-w-[1440px] mx-auto px-6 md:px-20 flex flex-col justify-center items-end text-right text-white">
-              <div className="space-y-4 max-w-2xl">
-                <h2 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-tight">
-                  {project.title.split('-').map((word, i) => (
+              <div className="space-y-4 max-w-2xl animate-fade-in-up">
+                <h2 className="text-4xl md:text-7xl font-bold uppercase tracking-tighter leading-tight font-sans">
+                  {project.title.split(' ').map((word, i) => (
                     <span key={i} className="block">{word.trim()}</span>
                   ))}
                 </h2>
                 <div className="flex justify-end pt-8">
-                  <button className="flex items-center gap-3 bg-white text-black px-8 py-3 text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-brand-gold hover:text-white transition-all">
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="flex items-center gap-3 bg-white text-black px-8 py-3 text-[10px] font-bold tracking-[0.2em] uppercase hover:bg-brand-gold hover:text-white transition-all"
+                  >
                     <Plus size={14} />
                     Xem chi tiết
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -64,7 +76,10 @@ export default function Projects() {
       </Swiper>
 
       {/* Down Arrow Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2">
+      <div 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 cursor-pointer"
+        onClick={() => window.scrollTo({ top: window.scrollY + window.innerHeight, behavior: "smooth" })}
+      >
         <div className="w-[1px] h-12 bg-gradient-to-b from-white/50 to-transparent" />
         <ChevronDown className="text-white/50 animate-bounce" size={24} />
       </div>
