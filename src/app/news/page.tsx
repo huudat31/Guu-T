@@ -14,10 +14,10 @@ export default async function NewsPage() {
       _id,
       title,
       "slug": slug.current,
-      "category": categories[0]->title,
+      "category": coalesce(category->title, categories[0]->title),
       publishedAt,
       "summary": excerpt,
-      "image": mainImage.asset->url
+      "image": coalesce(heroImage.asset->url, mainImage.asset->url)
     }
   `;
 
@@ -25,7 +25,9 @@ export default async function NewsPage() {
 
   return (
     <div className="min-h-screen flex flex-col font-sans">
-      <NewsHero />
+      <NewsHero 
+        backgroundImage={posts[0]?.image}
+      />
 
       {/* Articles */}
       <main className="flex-grow max-w-7xl mx-auto px-6 md:px-12 py-32 md:py-40">

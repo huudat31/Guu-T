@@ -26,9 +26,9 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
       _id,
       title,
       "slug": slug.current,
-      "category": categories[0]->title,
+      "category": coalesce(category->title, categories[0]->title),
       publishedAt,
-      "image": mainImage.asset->url,
+      "image": coalesce(heroImage.asset->url, mainImage.asset->url),
       body,
       excerpt
     }
@@ -43,20 +43,22 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="relative min-h-screen w-full overflow-hidden">
+      <section className="relative min-h-screen w-full overflow-hidden bg-neutral-900">
         <div className="absolute inset-0 z-0">
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="object-cover grayscale brightness-50"
-            priority
-          />
+          {post.image && (
+            <Image
+              src={post.image}
+              alt={post.title}
+              fill
+              className="object-cover grayscale brightness-50"
+              priority
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         </div>
         <div className="relative z-10 h-full flex flex-col justify-end pb-24 px-6 md:px-12 max-w-7xl mx-auto w-full">
           <span className="text-secondary font-sans text-[10px] tracking-widest uppercase mb-6 block">
-            {post.category} — {new Date(post.publishedAt).toLocaleDateString("vi-VN", { month: "long", year: "numeric" })}
+            {post.category || "Tin tức"} — {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("vi-VN", { month: "long", year: "numeric" }) : "Đang cập nhật"}
           </span>
           <h1 className="font-sans font-light text-5xl md:text-7xl text-white max-w-4xl leading-tight tracking-tight">
             {post.title}

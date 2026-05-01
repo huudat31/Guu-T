@@ -44,13 +44,15 @@ export default function Projects({ projects }: { projects: Project[] }) {
         {projects.map((project) => (
           <SwiperSlide key={project._id} className="relative h-full w-full">
             {/* Background Image */}
-            <div className="absolute inset-0">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                className="object-cover brightness-[0.6]"
-              />
+            <div className="absolute inset-0 bg-neutral-900">
+              {project.image && (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover brightness-[0.6]"
+                />
+              )}
               <div className="absolute inset-0 bg-gradient-to-l from-black/60 via-transparent to-transparent" />
             </div>
 

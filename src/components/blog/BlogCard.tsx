@@ -18,14 +18,16 @@ interface Post {
 const BlogCard = React.memo(({ post }: { post: Post }) => {
   return (
     <article className="glass-card group overflow-hidden flex flex-col gpu-accelerated h-full">
-      <div className="relative aspect-[4/5] overflow-hidden">
-        <Image
-          src={post.image}
-          alt={post.title}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-1000 group-hover:scale-110"
-        />
+      <div className="relative aspect-[4/5] overflow-hidden bg-neutral-900">
+        {post.image && (
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-1000 group-hover:scale-110"
+          />
+        )}
         <div className="absolute top-6 left-6">
           <span className="bg-secondary text-on-secondary px-4 py-1 font-sans text-[10px] tracking-widest uppercase">
             {post.category}
