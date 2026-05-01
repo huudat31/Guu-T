@@ -52,7 +52,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="min-h-screen bg-surface-dim overflow-x-hidden">
       {/* Hero */}
-      <section className="relative min-h-screen w-full overflow-hidden">
+      <section className="relative h-screen w-full overflow-hidden flex flex-col">
         <div className="absolute inset-0 z-0">
           <Image
             src={project.heroImage}
@@ -63,7 +63,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           />
           <div className="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent" />
         </div>
-        <div className="relative z-10 h-full flex flex-col justify-end pb-24 px-6 md:px-20 max-w-7xl mx-auto w-full">
+        <div className="relative z-10 flex-grow flex flex-col justify-end pb-24 px-6 md:px-20 max-w-7xl mx-auto w-full">
           <span className="text-secondary font-sans text-[10px] tracking-widest uppercase mb-4 block">
             {project.category} — {project.completionYear}
           </span>

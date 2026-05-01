@@ -43,7 +43,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}
-      <section className="relative min-h-screen w-full overflow-hidden bg-neutral-900">
+      <section className="relative h-screen w-full overflow-hidden bg-neutral-900 flex flex-col">
         <div className="absolute inset-0 z-0">
           {post.image && (
             <Image
@@ -56,7 +56,7 @@ export default async function NewsDetailPage({ params }: { params: Promise<{ slu
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
         </div>
-        <div className="relative z-10 h-full flex flex-col justify-end pb-24 px-6 md:px-12 max-w-7xl mx-auto w-full">
+        <div className="relative z-10 flex-grow flex flex-col justify-end pb-24 px-6 md:px-12 max-w-7xl mx-auto w-full">
           <span className="text-secondary font-sans text-[10px] tracking-widest uppercase mb-6 block">
             {post.category || "Tin tức"} — {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("vi-VN", { month: "long", year: "numeric" }) : "Đang cập nhật"}
           </span>
