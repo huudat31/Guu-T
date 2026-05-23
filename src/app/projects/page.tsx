@@ -9,6 +9,7 @@ interface Project {
   slug: string;
   category: string;
   image: string;
+  heroImage?: string;
 }
 
 export default async function ProjectsPage() {
@@ -18,11 +19,13 @@ export default async function ProjectsPage() {
       title,
       "slug": slug.current,
       "category": serviceType,
-      "image": heroImage.asset->url
+      "image": heroImage.asset->url,
+      "heroImage": heroImage.asset->url
     }
   `;
 
   const projects: Project[] = await cachedFetch(query);
+  const heroImages = projects.map((project) => project.heroImage || project.image).filter(Boolean) as string[];
 
   const stats = [
     { label: "Dự Án Hoàn Thiện", value: "150+" },
@@ -33,7 +36,7 @@ export default async function ProjectsPage() {
 
   return (
     <div className="min-h-screen bg-background selection:bg-secondary/30 selection:text-white">
-      <ProjectHero />
+      <ProjectHero images={heroImages} />
 
       {/* Stats */}
       <section className="py-24 md:py-40 px-6 md:px-20 bg-[#0b0f10]">

@@ -24,7 +24,7 @@ export default function TeamHero() {
           transition={{ delay: 0.3 }}
           className="font-sans text-secondary tracking-[0.6em] uppercase text-[10px] font-semibold mb-6"
         >
-          The Visionaries
+          Những người tiên phong
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, scale: 0.95 }}

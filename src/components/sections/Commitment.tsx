@@ -8,46 +8,46 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 const VALUES = [
   {
     icon: <Users size={32} strokeWidth={1} />,
-    title: "Client-Centric Approach",
-    desc: "Every client is a unique world; we narrate their story through the language of architecture, emphasizing 'human-centric design'."
+    title: "Tập trung vào khách hàng",
+    desc: "Mỗi khách hàng là một thế giới riêng; chúng tôi kể câu chuyện của họ thông qua ngôn ngữ kiến trúc, nhấn mạnh thiết kế lấy con người làm trung tâm."
   },
   {
     icon: <Leaf size={32} strokeWidth={1} />,
-    title: "Sustainability & Ecology",
-    desc: "We commit to using green materials, solar energy, and green roofs to protect the environment and promote sustainable living."
+    title: "Thân thiện & Bền vững",
+    desc: "Cam kết sử dụng vật liệu xanh, năng lượng mặt trời và mái xanh để bảo vệ môi trường và thúc đẩy lối sống bền vững."
   },
   {
     icon: <PenTool size={32} strokeWidth={1} />,
-    title: "Creativity & Aesthetics",
-    desc: "Each villa is a unique work of art, blending modern style with tropical influences, custom-tailored to the owner's preferences."
+    title: "Sáng tạo & Thẩm mỹ",
+    desc: "Mỗi công trình là một tác phẩm nghệ thuật độc đáo, hòa trộn phong cách hiện đại với ảnh hưởng nhiệt đới, tùy chỉnh theo chủ nhân."
   },
   {
     icon: <Award size={32} strokeWidth={1} />,
-    title: "Quality & Perfection",
-    desc: "Adhering to international standards, we maintain rigorous quality control in every detail of design and construction."
+    title: "Chất lượng & Sự Hoàn hảo",
+    desc: "Tuân thủ tiêu chuẩn quốc tế, chúng tôi duy trì kiểm soát chất lượng nghiêm ngặt trong từng chi tiết thiết kế và thi công."
   },
   {
     icon: <Cpu size={32} strokeWidth={1} />,
-    title: "Technology & Experience",
-    desc: "Utilizing VR/AI to create realistic design experiences, integrating smart technology for a convenient living space."
+    title: "Công nghệ & Trải nghiệm",
+    desc: "Ứng dụng VR/AI để tạo trải nghiệm thiết kế chân thực, tích hợp công nghệ thông minh cho không gian sống tiện nghi."
   },
   {
     icon: <Share2 size={32} strokeWidth={1} />,
-    title: "Community & Connection",
-    desc: "Building a community of Modern Tropical enthusiasts where they can connect, share stories, and celebrate lifestyle."
+    title: "Cộng đồng & Kết nối",
+    desc: "Xây dựng cộng đồng người yêu Modern Tropical để kết nối, chia sẻ câu chuyện và tôn vinh phong cách sống."
   }
 ];
 
 export default function Commitment() {
   return (
     <section id="commitment" className="section-padding bg-brand-bg">
-      <div className="mb-24 space-y-2">
+        <div className="mb-24 space-y-2">
         <AnimatedSection direction="right">
           <h3 className="text-xl md:text-2xl font-light tracking-[0.3em] text-slate-400 uppercase">
-            Guu & T Signature Values
+            Giá trị đặc trưng của Guu & T
           </h3>
-          <h2 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">
-            Delivering to our clients
+          <h2 className="mt-1 text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">
+            Cam kết với khách hàng
           </h2>
         </AnimatedSection>
       </div>

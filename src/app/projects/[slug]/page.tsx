@@ -1,19 +1,28 @@
 import { cachedFetch } from "@/components/sanity-client";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { notFound } from "next/navigation";
-import Image from "next/image";
+import { notFound, redirect } from "next/navigation";
+import RemoteImageWithFallback from "@/components/ui/RemoteImageWithFallback";
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const query = `*[_type == "project" && slug.current == $slug][0]{ title, description }`;
+  const query = `*[_type == "project" && slug.current == $slug][0]{ title, shortDesc }`;
   const project = await cachedFetch(query, { slug });
 
   if (!project) return { title: "Project Not Found" };
 
   return {
     title: `${project.title} | Guu & T`,
-    description: project.description,
+    description: project.shortDesc,
   };
 }
 
@@ -21,7 +30,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params;
 
   const query = `
-    *[_type == "project" && slug.current == $slug][0] {
+    *[_type == "project"] {
       _id,
       title,
       "slug": slug.current,
@@ -31,7 +40,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       completionYear,
       "heroImage": heroImage.asset->url,
       "gallery": gallery[].asset->url,
-      description,
+      shortDesc,
       "similarProjects": *[_type == "project" && serviceType == ^.serviceType && _id != ^._id][0...3] {
         _id,
         title,
@@ -43,10 +52,13 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     }
   `;
 
-  const project = await cachedFetch(query, { slug });
+  const projects = await cachedFetch(query);
+  const project =
+    projects.find((item: any) => item.slug === slug) ||
+    projects.find((item: any) => slugify(item.title) === slug);
 
   if (!project) {
-    notFound();
+    redirect("/projects");
   }
 
   return (
@@ -54,10 +66,11 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       {/* Hero */}
       <section className="relative h-screen w-full overflow-hidden flex flex-col">
         <div className="absolute inset-0 z-0">
-          <Image
+          <RemoteImageWithFallback
             src={project.heroImage}
             alt={project.title}
             fill
+            sizes="100vw"
             className="object-cover opacity-70"
             priority
           />
@@ -96,7 +109,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       <section className="py-8 px-6 md:px-20">
         <div className="max-w-3xl mx-auto">
           <p className="font-sans text-xl md:text-2xl text-on-surface-variant leading-relaxed mb-12 font-light">
-            {project.description}
+            {project.shortDesc}
           </p>
         </div>
       </section>
@@ -107,11 +120,12 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
             {project.gallery.map((img: string, idx: number) => (
               <div key={idx} className="overflow-hidden aspect-[4/3] group animate-fade-in">
-                <Image
+                <RemoteImageWithFallback
                   src={img}
                   alt={`${project.title} gallery ${idx + 1}`}
                   width={800}
                   height={600}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
               </div>
@@ -129,8 +143,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               {project.similarProjects.map((item: any) => (
                 <Link key={item._id} href={`/projects/${item.slug}`} className="glass-card group cursor-pointer overflow-hidden">
                   <div className="aspect-[4/5] overflow-hidden relative">
-                    <Image
+                    <RemoteImageWithFallback
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover grayscale group-hover:scale-110 group-hover:grayscale-0 transition-all duration-1000"
                       src={item.image}
                       alt={item.title}

@@ -1,13 +1,14 @@
 import { SERVICES_DATA } from "../lib/data";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import RemoteImageWithFallback from "@/components/ui/RemoteImageWithFallback";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const service = SERVICES_DATA.find((s) => s.slug === slug);
 
   if (!service) return { title: "Service Not Found" };
+  if (!service) return { title: "Không tìm thấy dịch vụ" };
 
   return {
     title: `${service.title} | Guu & T`,
@@ -30,10 +31,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       {/* Hero */}
       <section className="relative min-h-screen w-full flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
+          <RemoteImageWithFallback
             src={service.heroImage}
             alt={service.title}
             fill
+            sizes="100vw"
             className="object-cover grayscale opacity-50"
             priority
           />
@@ -41,7 +43,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         </div>
         <div className="max-w-7xl mx-auto px-6 md:px-20 relative z-10">
           <div className="max-w-3xl animate-fade-in-up">
-            <span className="text-secondary font-sans mb-6 block tracking-widest uppercase text-xs">ARCHITECTURE & INTERIOR SERVICE</span>
+            <span className="text-secondary font-sans mb-6 block tracking-widest uppercase text-xs">DỊCH VỤ KIẾN TRÚC & NỘI THẤT</span>
             <h1 className="font-sans font-light text-5xl md:text-7xl text-white mb-8">{service.title}</h1>
             <div className="h-1 w-24 bg-gradient-to-r from-secondary to-transparent" />
           </div>
@@ -91,10 +93,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <div className="relative group animate-fade-in">
             <div className="absolute -inset-4 border border-secondary/20 translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-700" />
             <div className="relative z-10 w-full h-[600px] overflow-hidden">
-              <Image
+              <RemoteImageWithFallback
                 src={service.visionImage}
                 alt="Vision"
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
               />
             </div>
@@ -126,7 +129,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         <div className="max-w-7xl mx-auto">
           <div className="glass-card max-w-5xl mx-auto p-12 md:p-24 animate-fade-in">
             <div className="text-center mb-16">
-              <span className="font-sans text-secondary block mb-4 tracking-widest uppercase text-xs">LET&apos;S CONNECT</span>
+              <span className="font-sans text-secondary block mb-4 tracking-widest uppercase text-xs">KẾT NỐI</span>
               <h2 className="font-sans font-light text-3xl md:text-5xl text-white">Bắt Đầu Hành Trình Của Bạn</h2>
             </div>
             <form className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">

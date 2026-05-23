@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import EdgeScrollbar from "../ui/EdgeScrollbar";
 
 interface AppContextType {
   isLoaderFinished: boolean;
@@ -22,6 +23,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   return (
     <AppContext.Provider value={{ isLoaderFinished, setIsLoaderFinished }}>
       {children}
+      <EdgeScrollbar />
     </AppContext.Provider>
   );
 }

@@ -20,12 +20,12 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Projects", href: "/projects" },
-    { name: "News", href: "/news" },
-    { name: "Contact", href: "/contact" },
+    { name: "Trang chủ", href: "/" },
+    { name: "Về chúng tôi", href: "/about" },
+    { name: "Dịch vụ", href: "/services" },
+    { name: "Dự án", href: "/projects" },
+    { name: "Tin tức", href: "/news" },
+    { name: "Liên hệ", href: "/contact" },
   ];
 
   const isActive = (href: string) => {
@@ -65,7 +65,7 @@ export default function Header() {
             href="/contact"
             className="hidden md:block bg-brand-gold text-brand-bg px-6 py-2.5 font-sans uppercase text-[10px] font-bold tracking-widest hover:bg-[#d4ac5e] transition-colors"
           >
-            Enquire Now
+            Liên hệ ngay
           </Link>
 
           <button
@@ -103,7 +103,7 @@ export default function Header() {
                 className="bg-brand-gold text-brand-bg px-6 py-3 font-sans uppercase text-[10px] font-bold tracking-widest text-center"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Enquire Now
+                Liên hệ ngay
               </Link>
             </div>
           </motion.div>

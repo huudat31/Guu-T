@@ -53,7 +53,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
             <button
               onClick={onClose}
               className="absolute top-4 right-4 p-2 text-gray-500 hover:text-foreground transition-colors rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
-              aria-label="Close modal"
+              aria-label="Đóng"
             >
               <X size={20} />
             </button>

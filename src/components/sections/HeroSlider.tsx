@@ -28,7 +28,7 @@ export default function HeroSlider() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="text-5xl md:text-7xl font-light tracking-tight text-white max-w-4xl mx-auto"
         >
-          Crafting Timeless Spaces
+          Thiết kế không gian vượt thời gian
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -37,7 +37,7 @@ export default function HeroSlider() {
           transition={{ delay: 0.5, duration: 1 }}
           className="text-lg md:text-xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed"
         >
-          Elevating the human experience through architectural precision and curated interior narratives.
+          Nâng tầm trải nghiệm con người thông qua sự chính xác kiến trúc và câu chuyện nội thất được tuyển chọn.
         </motion.p>
       </div>
 

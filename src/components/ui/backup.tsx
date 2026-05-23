@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Compass } from "lucide-react";
 import { useAppContext } from "@/components/providers/AppProvider";
@@ -71,27 +71,27 @@ export default function Loader() {
           </div>
 
           {/* Center Content */}
-          <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
+          <div className="relative z-10 flex flex-col items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: "easeOut" }}
-              className="flex flex-col items-center text-center gap-0"
+              className="flex flex-col items-center text-center gap-6"
             >
-              <img
-                src="/LOGOgoc.png"
-                alt="Logo GUU & T"
-                style={{ width: "920px", height: "450px" }}
-                className="select-none logo-glow"
-              />
+              <h1
+                className="text-5xl md:text-7xl font-light tracking-[0.6em] text-white select-none whitespace-nowrap logo-glow"
+                style={{ fontFamily: '"Polyphonic", serif' }}
+              >
+                GUU&T
+              </h1>
 
-              <div className="relative -top-[100px] flex flex-col items-center gap-0 -mt-6 md:-mt-8">
-                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.4em] text-brand-gold/70 leading-none">
+              <div className="flex flex-col items-center gap-4">
+                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.4em] text-brand-gold/70">
                   Đẳng cấp kiến trúc
                 </p>
 
                 {/* Shimmering Loading Line */}
-                <div className="w-48 md:w-68 h-[1.5px] bg-white/5 relative overflow-hidden mt-2">
+                <div className="w-48 md:w-68 h-[1.5px] bg-white/5 relative overflow-hidden mt-1">
                   <motion.div
                     initial={{ x: "-100%" }}
                     animate={{ x: "100%" }}

@@ -66,13 +66,13 @@ export default async function AboutPage() {
 
       {/* Philosophy Section */}
       <section className="py-24 md:py-40 px-8 md:px-20 max-w-[1440px] mx-auto text-center">
-        <div className="max-w-4xl mx-auto space-y-12 animate-fade-in-up">
-          <span className="font-sans text-secondary tracking-widest uppercase text-xs font-semibold block">
-            The Philosophy
+        <div className="max-w-5xl mx-auto space-y-12 animate-fade-in-up">
+          <span className="font-sans text-secondary tracking-widest uppercase text-3xl font-semibold block">
+            Triết lý
           </span>
-          <h2 className="font-sans text-3xl md:text-5xl lg:text-6xl leading-tight text-on-surface font-light">
-            Guu & T là thương hiệu nội thất sáng tạo, là sự kết hợp phong cách Mid-century Modern
-            Contemporary, đặt nghệ thuật làm trung tâm, tập trung cá nhân hóa và thủ công Việt Nam.
+          <h2 className="san-serif noto-serif-300 text-xl md:text-3xl lg:text-4xl leading-tight text-on-surface font-light">
+            " Guu & T là thương hiệu nội thất sáng tạo, là sự kết hợp phong cách Mid-century Modern
+            Contemporary, đặt nghệ thuật làm trung tâm, tập trung cá nhân hóa và thủ công Việt Nam "
           </h2>
           <div className="w-24 h-px bg-secondary/30 mx-auto" />
         </div>
@@ -105,7 +105,7 @@ export default async function AboutPage() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-24 gap-8">
           <div className="max-w-2xl animate-fade-in">
             <span className="font-sans text-secondary tracking-widest uppercase text-xs font-semibold block mb-4">
-              Our Methodology
+              Phương pháp của chúng tôi
             </span>
             <h2 className="font-sans text-4xl md:text-5xl text-on-surface font-light">
               Từ ý tưởng đến hiện thực hoàn mỹ.
@@ -138,7 +138,7 @@ export default async function AboutPage() {
         <div className="max-w-[1440px] mx-auto">
           <div className="text-center mb-24 animate-fade-in">
             <span className="font-sans text-secondary tracking-widest uppercase text-xs font-semibold block mb-4">
-              The Visionaries
+              Những người tiên phong
             </span>
             <h2 className="font-sans text-4xl md:text-5xl text-on-surface font-light">
               Đội ngũ sáng tạo

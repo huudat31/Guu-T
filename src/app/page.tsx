@@ -10,9 +10,10 @@ import { cachedFetch } from "@/components/sanity-client";
 
 export default async function Home() {
   const projectsQuery = `
-    *[_type == "project"] | order(publishedAt desc)[0...5] {
+    *[_type == "project"] | order(_updatedAt desc)[0...6] {
       _id,
       title,
+      shortDesc,
       "slug": slug.current,
       "image": heroImage.asset->url
     }

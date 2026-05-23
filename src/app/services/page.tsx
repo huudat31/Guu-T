@@ -55,13 +55,13 @@ export default function ServicesPage() {
       <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24 md:pb-40">
         <div className="w-full py-24 border-y border-white/5 flex flex-col items-center text-center animate-fade-in">
           <h3 className="text-3xl md:text-5xl font-light text-white mb-8">
-            Ready to define your space?
+            Sẵn sàng định hình không gian của bạn?
           </h3>
           <Link
             href="/contact"
             className="bg-secondary text-on-secondary px-12 py-5 font-semibold text-xs tracking-[0.2em] uppercase hover:bg-white transition-colors duration-500"
           >
-            Start a Conversation
+            Bắt đầu trao đổi
           </Link>
         </div>
       </section>

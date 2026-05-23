@@ -41,6 +41,15 @@
   body {
     scroll-behavior: smooth;
     @apply bg-brand-bg text-slate-200 font-sans antialiased;
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
   }
 }
 
@@ -198,3 +207,13 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Playfair Display utility class */
+/* Noto Serif utility classes */
+.noto-serif {
+  font-family: 'Noto Serif', serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "wdth" 100;
+}
+.noto-serif-400 { font-weight: 400; font-style: normal; }
+.noto-serif-700 { font-weight: 700; font-style: normal; }

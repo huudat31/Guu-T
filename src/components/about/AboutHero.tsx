@@ -24,7 +24,7 @@ export default function AboutHero() {
           transition={{ duration: 1.2, ease: "easeOut" }}
           className="font-sans font-light text-white text-6xl md:text-9xl tracking-tighter mb-6 opacity-95"
         >
-          About Us
+          Về chúng tôi
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -32,7 +32,7 @@ export default function AboutHero() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="font-sans text-secondary tracking-[0.4em] uppercase text-xs md:text-sm font-medium"
         >
-          Defining Architectural Excellence
+          Định nghĩa đẳng cấp kiến trúc
         </motion.p>
       </div>
       <motion.div

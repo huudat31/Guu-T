@@ -6,10 +6,10 @@ import { Layout, Armchair, Hammer, Compass, ArrowRight } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const SERVICES = [
-  { icon: <Layout />, title: "Architectural Design", desc: "Structural conceptualization and master planning for modern edifices." },
-  { icon: <Armchair />, title: "Interior Design", desc: "Bespoke space curation, color palettes, and material selection." },
-  { icon: <Hammer />, title: "Construction Management", desc: "End-to-end execution with meticulous attention to structural integrity." },
-  { icon: <Compass />, title: "Furniture Production", desc: "Custom artisan furniture designed specifically for your space." }
+  { icon: <Layout />, title: "Thiết kế kiến trúc", desc: "Lên ý tưởng cấu trúc và quy hoạch tổng thể cho các công trình hiện đại." },
+  { icon: <Armchair />, title: "Thiết kế nội thất", desc: "Chỉnh chu không gian theo yêu cầu, bảng màu và lựa chọn vật liệu." },
+  { icon: <Hammer />, title: "Quản lý thi công", desc: "Thi công trọn gói với chú trọng tới tính vững chắc và chi tiết cấu trúc." },
+  { icon: <Compass />, title: "Sản xuất nội thất", desc: "Đồ nội thất thủ công thiết kế riêng cho không gian của bạn." }
 ];
 
 export default function Services() {
@@ -17,8 +17,8 @@ export default function Services() {
     <section id="services" className="py-32 px-6 md:px-20 bg-gradient-to-tr from-brand-bg via-brand-bg to-white/[0.02]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-24 space-y-4">
-          <p className="text-[10px] tracking-[0.3em] font-bold text-brand-gold uppercase">What We Do</p>
-          <h2 className="text-4xl md:text-5xl font-light text-white">Holistic Design Solutions</h2>
+          <p className="text-[10px] tracking-[0.3em] font-bold text-brand-gold uppercase">Dịch vụ của chúng tôi</p>
+          <h2 className="text-4xl md:text-5xl font-light text-white">Giải pháp thiết kế toàn diện</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -34,7 +34,7 @@ export default function Services() {
                 <p className="text-sm text-slate-400 mb-10 leading-relaxed">{service.desc}</p>
               </div>
               <a href="#" className="flex items-center gap-2 text-[10px] tracking-widest font-bold text-brand-gold uppercase group">
-                Details <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
+                Chi tiết <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
               </a>
             </AnimatedSection>
           ))}

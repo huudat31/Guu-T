@@ -12,7 +12,7 @@ interface NewsHeroProps {
 
 export default function NewsHero({ 
   title = "Tin Tức & Sự Kiện", 
-  subtitle = "Visions & Narratives",
+  subtitle = "Tầm nhìn & Câu chuyện",
   backgroundImage
 }: NewsHeroProps) {
   return (

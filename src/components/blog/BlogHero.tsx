@@ -29,7 +29,7 @@ export default function BlogHero() {
           transition={{ delay: 0.5, duration: 0.8 }}
           className="font-sans text-secondary mb-6 tracking-[0.4em] text-xs uppercase"
         >
-          Visions & Narratives
+          Tầm nhìn & Câu chuyện
         </motion.p>
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
