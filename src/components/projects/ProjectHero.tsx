@@ -10,9 +10,12 @@ interface ProjectHeroProps {
 }
 
 export default function ProjectHero({ images }: ProjectHeroProps) {
-  const heroImages = images.length > 0 ? images : [
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuDrcHLOa44Laz0ZxZU7xAbMXgmDoXHSkGkjse_T8seYC_e2em63iPQL36EPhx9xy3clAEndyryOCBfc2ox3p-FFV1QsKFW0q9hmeM_qkT6uFGtaJBIl6r62Tf9L0_HFwrLIVLGZjk2xZ4CfiEG-hTWlRooDktS3qDrNUfI8bNgCXrwzIRe7KR0QOMfP1fXjuyhcVjlRHeuSGKgH5wNkUsOGr2rgkQwXUlfL9bLn6-CDGh2CSdRMDSdagfbA4dBcWtAuIZ_gJoKB0reS",
-  ];
+  const heroImages =
+    images.length > 0
+      ? images
+      : [
+          "https://lh3.googleusercontent.com/aida-public/AB6AXuDrcHLOa44Laz0ZxZU7xAbMXgmDoXHSkGkjse_T8seYC_e2em63iPQL36EPhx9xy3clAEndyryOCBfc2ox3p-FFV1QsKFW0q9hmeM_qkT6uFGtaJBIl6r62Tf9L0_HFwrLIVLGZjk2xZ4CfiEG-hTWlRooDktS3qDrNUfI8bNgCXrwzIRe7KR0QOMfP1fXjuyhcVjlRHeuSGKgH5wNkUsOGr2rgkQwXUlfL9bLn6-CDGh2CSdRMDSdagfbA4dBcWtAuIZ_gJoKB0reS",
+        ];
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -43,7 +46,12 @@ export default function ProjectHero({ images }: ProjectHeroProps) {
             <motion.div
               initial={{ scale: 1.15 }}
               animate={{ scale: 1.05 }}
-              transition={{ duration: 20, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
               className="relative w-full h-full"
             >
               <Image
@@ -85,7 +93,9 @@ export default function ProjectHero({ images }: ProjectHeroProps) {
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
-        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+        onClick={() =>
+          window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+        }
       >
         <ChevronDown className="text-secondary opacity-50" size={32} />
       </motion.div>
