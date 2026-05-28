@@ -21,7 +21,7 @@ export default function Loader() {
           key="global-loader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
-          className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#101415] to-[#0b0f10] overflow-hidden"
+          className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-gradient-to-br from-[#2a1e1a] via-[#171211] to-[#100d0c] overflow-hidden"
         >
           {/* Background Texture Overlay */}
           <div
@@ -79,16 +79,14 @@ export default function Loader() {
               className="flex flex-col items-center text-center gap-0"
             >
               <img
-                src="/LOGOgoc.png"
+                src="/logo/LOGO5sloadtrang.png"
                 alt="Logo GUU & T"
                 style={{ width: "920px", height: "450px" }}
                 className="select-none logo-glow"
               />
 
               <div className="relative -top-[100px] flex flex-col items-center gap-0 -mt-6 md:-mt-8">
-                <p className="text-[10px] md:text-xs font-semibold uppercase tracking-[0.4em] text-brand-gold/70 leading-none">
-                  Đẳng cấp kiến trúc
-                </p>
+                
 
                 {/* Shimmering Loading Line */}
                 <div className="w-48 md:w-68 h-[1.5px] bg-white/5 relative overflow-hidden mt-2">

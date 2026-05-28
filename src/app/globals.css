@@ -3,30 +3,30 @@
 @theme {
   --font-montserrat: "Montserrat", sans-serif;
 
-  --color-brand-bg: #101415;
-  --color-brand-gold: #e9c176;
-  --color-brand-primary: #bec6e0;
-  --color-brand-surface: rgba(255, 255, 255, 0.05);
+  --color-brand-bg: #171211;
+  --color-brand-gold: #b89c8e;
+  --color-brand-primary: #c8b2a7;
+  --color-brand-surface: rgba(184, 156, 142, 0.08);
 
-  --color-background: #101415;
-  --color-foreground: #ffffff;
-  --color-primary: #bec6e0;
-  --color-secondary: #e9c176;
-  --color-on-secondary: #101415;
-  --color-accent: #e9c176;
-  --color-gold: #e9c176;
-  --color-gold-hover: #d4ac5e;
-  --color-midnight: #101415;
-  --color-surface: #101415;
-  --color-surface-dim: #0c1011;
-  --color-surface-container: #1a1f20;
-  --color-surface-container-low: #161b1c;
-  --color-surface-container-lowest: #0d1213;
-  --color-surface-container-high: #202526;
-  --color-surface-bright: #2a3133;
-  --color-outline-variant: rgba(255, 255, 255, 0.12);
-  --color-on-surface: #e8eaed;
-  --color-on-surface-variant: #8c9296;
+  --color-background: #171211;
+  --color-foreground: #f7f2ef;
+  --color-primary: #c8b2a7;
+  --color-secondary: #b89c8e;
+  --color-on-secondary: #171211;
+  --color-accent: #b89c8e;
+  --color-gold: #b89c8e;
+  --color-gold-hover: #c7ad9f;
+  --color-midnight: #171211;
+  --color-surface: #171211;
+  --color-surface-dim: #120e0d;
+  --color-surface-container: #221a18;
+  --color-surface-container-low: #1c1513;
+  --color-surface-container-lowest: #120e0d;
+  --color-surface-container-high: #2a201d;
+  --color-surface-bright: #342724;
+  --color-outline-variant: rgba(184, 156, 142, 0.18);
+  --color-on-surface: #f5eee9;
+  --color-on-surface-variant: #b69e92;
 
   --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
 
@@ -40,7 +40,7 @@
   html,
   body {
     scroll-behavior: smooth;
-    @apply bg-brand-bg text-slate-200 font-sans antialiased;
+    @apply bg-background text-on-surface font-sans antialiased;
     scrollbar-width: none;
     scrollbar-color: transparent transparent;
   }
@@ -55,9 +55,9 @@
 
 @layer components {
   .glassmorphism {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(184, 156, 142, 0.08);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(184, 156, 142, 0.14);
   }
 
   .glass-card {
@@ -71,7 +71,7 @@
   }
 
   .nav-link {
-    @apply font-sans tracking-[0.2em] uppercase text-[10px] font-medium text-slate-400 hover:text-brand-gold transition-colors duration-300;
+    @apply font-sans tracking-[0.2em] uppercase text-[10px] font-medium text-on-surface-variant hover:text-brand-gold transition-colors duration-300;
   }
 
   .section-padding {
@@ -79,13 +79,13 @@
   }
 
   .logo-glow {
-    text-shadow: 0 0 20px rgba(233, 193, 118, 0.3);
+    text-shadow: 0 0 20px rgba(184, 156, 142, 0.25);
   }
 
   .glass-edge {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(184, 156, 142, 0.05);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(184, 156, 142, 0.12);
     box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
   }
 

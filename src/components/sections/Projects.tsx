@@ -2,9 +2,12 @@
 
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, EffectFade } from "swiper/modules";
-import { ChevronDown, ChevronLeft, ChevronRight, Plus } from "lucide-react";
 import type { Swiper as SwiperType } from "swiper";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
+import { Plus } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -17,6 +20,7 @@ interface Project {
 }
 
 export default function Projects({ projects }: { projects: Project[] }) {
+  // no manual prev/next controls needed; pagination dots handle navigation
   const swiperRef = React.useRef<SwiperType | null>(null);
 
   if (!projects || projects.length === 0) return null;
@@ -31,19 +35,14 @@ export default function Projects({ projects }: { projects: Project[] }) {
           delay: 5000,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-          renderBullet: (index, className) => {
-            return `<span class="${className} !bg-white !opacity-50 !w-2 !h-2"></span>`;
-          },
-        }}
+        pagination={{ clickable: true }}
         loop={true}
         observer={true}
         observeParents={true}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
-        className="absolute inset-0 h-full w-full"
+        className="absolute inset-0 h-full w-full z-0"
       >
         {projects.map((project) => (
           <SwiperSlide key={project._id} className="relative h-full w-full">
@@ -60,19 +59,12 @@ export default function Projects({ projects }: { projects: Project[] }) {
               <div className="absolute inset-0 bg-gradient-to-l from-black/60 via-transparent to-transparent" />
             </div>
 
-            {/* Content Overlay */}
-            <div className="relative h-full max-w-[1440px] mx-auto px-6 md:px-20 pt-24 md:pt-28 flex flex-col justify-start items-end text-right text-white">
-              <div className="space-y-4 max-w-2xl animate-fade-in-up">
+            {/* Content Overlay - moved to bottom-right, no description, single-line title */}
+            <div className="absolute inset-0 flex items-end justify-end">
+              <div className="max-w-2xl mr-4 md:mr-8 lg:mr-12 mb-4 md:mb-8 lg:mb-12 text-right animate-fade-in-up text-white">
                 <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight font-sans">
-                  {project.title.split(' ').map((word, i) => (
-                    <span key={i} className="block">{word.trim()}</span>
-                  ))}
+                  {project.title}
                 </h2>
-                {project.shortDesc && (
-                  <p className="ml-auto max-w-lg text-sm md:text-base text-white/80 leading-relaxed normal-case tracking-normal">
-                    {project.shortDesc}
-                  </p>
-                )}
                 <div className="flex justify-end pt-5">
                   <Link
                     href={`/projects/${project.slug}`}
@@ -88,50 +80,35 @@ export default function Projects({ projects }: { projects: Project[] }) {
         ))}
       </Swiper>
 
-      <button
-        type="button"
-        aria-label="Dự án trước"
-        className="projects-prev absolute left-4 md:left-7 top-1/2 -translate-y-1/2 z-30 inline-flex cursor-pointer items-center justify-center text-white/75 transition-all duration-200 hover:-translate-x-1 hover:text-brand-gold"
-        onClick={() => swiperRef.current?.slidePrev()}
-      >
-        <ChevronLeft size={28} />
-      </button>
-      <button
-        type="button"
-        aria-label="Dự án tiếp theo"
-        className="projects-next absolute right-4 md:right-7 top-1/2 -translate-y-1/2 z-30 inline-flex cursor-pointer items-center justify-center text-white/75 transition-all duration-200 hover:translate-x-1 hover:text-brand-gold"
-        onClick={() => swiperRef.current?.slideNext()}
-      >
-        <ChevronRight size={28} />
-      </button>
+      {/* Left/right arrow buttons removed — pagination dots are used for navigation */}
 
-      {/* Down Arrow Indicator */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20 inline-flex w-fit flex-col items-center gap-0.5">
-        <div className="w-[1px] h-5 bg-gradient-to-b from-white/50 to-transparent pointer-events-none" />
-        <button
-          type="button"
-          aria-label="Cuộn xuống"
-          className="inline-flex h-4 w-4 items-center justify-center cursor-s-resize"
-          onClick={() => window.scrollTo({ top: window.scrollY + window.innerHeight, behavior: "smooth" })}
-        >
-          <ChevronDown className="text-white/50 animate-bounce" size={16} />
-        </button>
-      </div>
+      {/* Down arrow removed as requested */}
 
       <style jsx global>{`
         .swiper-pagination {
-          bottom: 34px !important;
+          bottom: 28px !important;
           left: 50% !important;
           transform: translateX(-50%) !important;
           width: auto !important;
           z-index: 30 !important;
+          display: flex !important;
+          gap: 4px;
+          justify-content: center;
+          pointer-events: auto !important;
+        }
+        .swiper-pagination-bullet {
+          width: 12px !important;
+          height: 12px !important;
+          background: rgba(255,255,255,0.45) !important;
+          opacity: 1 !important;
+          margin: 0 2px !important;
+          border-radius: 9999px !important;
+          transition: transform 0.18s ease, background 0.18s ease !important;
+          cursor: pointer !important;
+          position: relative !important;
         }
         .swiper-pagination-bullet-active {
-          background: #e9c176 !important;
-          opacity: 1 !important;
-          width: 24px !important;
-          border-radius: 4px !important;
-          transition: width 0.3s ease !important;
+          background: #b89c8e !important;
         }
       `}</style>
     </section>

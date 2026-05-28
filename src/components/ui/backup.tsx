@@ -21,7 +21,7 @@ export default function Loader() {
           key="global-loader"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
-          className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#101415] to-[#0b0f10] overflow-hidden"
+          className="fixed inset-0 z-[999] flex flex-col items-center justify-center bg-gradient-to-br from-[#2a1e1a] via-[#171211] to-[#100d0c] overflow-hidden"
         >
           {/* Background Texture Overlay */}
           <div

@@ -35,7 +35,7 @@ export default function HeroSlider() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5, duration: 1 }}
-          className="text-lg md:text-xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed"
+          className="text-lg md:text-xl text-on-surface-variant font-light max-w-2xl mx-auto leading-relaxed"
         >
           Nâng tầm trải nghiệm con người thông qua sự chính xác kiến trúc và câu chuyện nội thất được tuyển chọn.
         </motion.p>

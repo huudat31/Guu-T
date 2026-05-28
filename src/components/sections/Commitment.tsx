@@ -43,7 +43,7 @@ export default function Commitment() {
     <section id="commitment" className="section-padding bg-brand-bg">
         <div className="mb-24 space-y-2">
         <AnimatedSection direction="right">
-          <h3 className="text-xl md:text-2xl font-light tracking-[0.3em] text-slate-400 uppercase">
+          <h3 className="text-xl md:text-2xl font-light tracking-[0.3em] text-on-surface-variant uppercase">
             Giá trị đặc trưng của Guu & T
           </h3>
           <h2 className="mt-1 text-4xl md:text-5xl font-bold text-white uppercase tracking-tight">
@@ -69,7 +69,7 @@ export default function Commitment() {
                 </h4>
                 <div className="w-10 h-[1px] bg-white/20 group-hover:w-full transition-all duration-500" />
               </div>
-              <p className="text-sm text-slate-400 leading-relaxed font-light">
+              <p className="text-sm text-on-surface-variant leading-relaxed font-light">
                 {item.desc}
               </p>
             </div>

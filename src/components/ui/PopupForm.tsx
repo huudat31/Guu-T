@@ -55,7 +55,7 @@ export default function PopupForm() {
             </div>
             <div className="space-y-1">
               <p className="text-white">Website:</p>
-              <p className="opacity-60 lowercase">guuandt.com.vn</p>
+              <p className="opacity-60 lowercase">guut.com.vn</p>
             </div>
           </div>
         </div>

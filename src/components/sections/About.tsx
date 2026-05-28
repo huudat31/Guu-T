@@ -6,22 +6,13 @@ import AnimatedSection from "@/components/ui/AnimatedSection";
 
 export default function About() {
   return (
-    <section id="about" className="bg-white/[0.02] py-32">
-      <div className="max-w-7xl mx-auto px-6 md:px-20 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-        <AnimatedSection direction="right" className="relative">
-          <div className="absolute -inset-4 border border-brand-gold/20 translate-x-4 translate-y-4" />
-          <img
-            src={IMAGES.about}
-            alt="About Aura"
-            className="relative z-10 w-full aspect-[4/5] object-cover"
-          />
-        </AnimatedSection>
-
-        <div className="space-y-12">
+    <section id="about" className="relative bg-white/[0.02] overflow-hidden lg:min-h-screen">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch">
+        <div className="px-6 md:px-20 lg:pl-20 lg:pr-12 py-32 lg:py-40 space-y-12 flex flex-col justify-center relative z-10">
           <AnimatedSection direction="left" className="space-y-6">
             <p className="text-[10px] tracking-[0.3em] font-bold text-brand-gold uppercase">Thành lập 2014</p>
             <h2 className="text-4xl md:text-5xl font-light text-white">Tạo nên câu chuyện nghệ thuật</h2>
-            <p className="text-lg text-slate-300 font-light leading-loose">
+            <p className="text-lg text-on-surface-variant font-light leading-loose">
               Guu & T là thương hiệu nội thất sáng tạo, đặt nghệ thuật ở trung tâm và chú trọng cá nhân hóa cùng tinh hoa thủ công Việt Nam.
             </p>
           </AnimatedSection>
@@ -29,11 +20,11 @@ export default function About() {
           <div className="grid grid-cols-2 gap-12">
             <AnimatedSection delay={0.2}>
               <p className="text-4xl font-light text-brand-gold mb-2">Kể từ</p>
-              <p className="text-[10px] tracking-widest uppercase text-slate-400">2014</p>
+              <p className="text-[10px] tracking-widest uppercase text-on-surface-variant">2014</p>
             </AnimatedSection>
             <AnimatedSection delay={0.3}>
               <p className="text-4xl font-light text-brand-gold mb-2">Thủ công</p>
-              <p className="text-[10px] tracking-widest uppercase text-slate-400">Nghệ nhân thực hiện</p>
+              <p className="text-[10px] tracking-widest uppercase text-on-surface-variant">Nghệ nhân thực hiện</p>
             </AnimatedSection>
           </div>
 
@@ -43,6 +34,14 @@ export default function About() {
             </a>
           </AnimatedSection>
         </div>
+
+        <AnimatedSection direction="right" className="relative w-full min-h-[70vh] lg:min-h-full lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+          <img
+            src={IMAGES.about}
+            alt="About Aura"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </AnimatedSection>
       </div>
     </section>
   );
