@@ -7,15 +7,24 @@ import { useEffect, useState } from "react";
 
 interface ProjectHeroProps {
   images: string[];
+  staticImage?: string;
+  heading?: string;
+  subtext?: string;
 }
 
-export default function ProjectHero({ images }: ProjectHeroProps) {
-  const heroImages =
-    images.length > 0
+export default function ProjectHero({
+  images,
+  staticImage,
+  heading = "Dự Án",
+  subtext = "Kiến Trúc & Nội Thất"
+}: ProjectHeroProps) {
+  const heroImages = staticImage
+    ? [staticImage]
+    : images.length > 0
       ? images
       : [
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDrcHLOa44Laz0ZxZU7xAbMXgmDoXHSkGkjse_T8seYC_e2em63iPQL36EPhx9xy3clAEndyryOCBfc2ox3p-FFV1QsKFW0q9hmeM_qkT6uFGtaJBIl6r62Tf9L0_HFwrLIVLGZjk2xZ4CfiEG-hTWlRooDktS3qDrNUfI8bNgCXrwzIRe7KR0QOMfP1fXjuyhcVjlRHeuSGKgH5wNkUsOGr2rgkQwXUlfL9bLn6-CDGh2CSdRMDSdagfbA4dBcWtAuIZ_gJoKB0reS",
-        ];
+        "https://lh3.googleusercontent.com/aida-public/AB6AXuDrcHLOa44Laz0ZxZU7xAbMXgmDoXHSkGkjse_T8seYC_e2em63iPQL36EPhx9xy3clAEndyryOCBfc2ox3p-FFV1QsKFW0q9hmeM_qkT6uFGtaJBIl6r62Tf9L0_HFwrLIVLGZjk2xZ4CfiEG-hTWlRooDktS3qDrNUfI8bNgCXrwzIRe7KR0QOMfP1fXjuyhcVjlRHeuSGKgH5wNkUsOGr2rgkQwXUlfL9bLn6-CDGh2CSdRMDSdagfbA4dBcWtAuIZ_gJoKB0reS",
+      ];
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -65,39 +74,45 @@ export default function ProjectHero({ images }: ProjectHeroProps) {
           </motion.div>
         </AnimatePresence>
       </div>
-      <div className="relative z-20 text-center px-4">
+      <div className="relative z-20 text-center px-8 max-w-4xl mx-auto">
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="font-sans text-[10px] font-semibold text-secondary mb-6 tracking-[0.6em] uppercase"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="font-sans text-secondary mb-6 tracking-[0.4em] text-xs uppercase"
         >
-          Kiến Trúc & Nội Thất
+          {subtext}
         </motion.p>
         <motion.h1
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 1 }}
-          className="font-sans font-light text-5xl md:text-8xl text-white uppercase mb-8 tracking-wider"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+          className="font-sans font-light text-5xl md:text-7xl text-white mb-8"
         >
-          Dự Án
+          {heading}
         </motion.h1>
         <motion.div
-          initial={{ height: 0 }}
-          animate={{ height: 96 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="w-px bg-gradient-to-b from-secondary to-transparent mx-auto mt-12"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="w-24 h-px bg-secondary mx-auto"
         />
       </div>
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 cursor-pointer z-20"
         onClick={() =>
           window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
         }
       >
-        <ChevronDown className="text-secondary opacity-50" size={32} />
+        <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-slate-400 opacity-60">
+          Khám Phá
+        </span>
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
+          <ChevronDown className="text-secondary" />
+        </motion.div>
       </motion.div>
     </section>
   );

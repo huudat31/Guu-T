@@ -77,7 +77,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           <div className="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent" />
         </div>
         <div className="relative z-10 flex-grow flex flex-col justify-end pb-24 px-6 md:px-20 max-w-7xl mx-auto w-full">
-          <span className="text-secondary font-sans text-[10px] tracking-widest uppercase mb-4 block">
+          <span className="text-secondary font-sans text-xs tracking-[0.4em] uppercase mb-4 block">
             {project.category} — {project.completionYear}
           </span>
           <h1 className="font-sans font-light text-5xl md:text-7xl text-white max-w-4xl leading-tight tracking-tight mb-6">
@@ -89,7 +89,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {/* Project Info */}
       <section className="py-24 md:py-40 px-6 md:px-20">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
           {[
@@ -105,7 +104,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {/* Narrative */}
       <section className="py-8 px-6 md:px-20">
         <div className="max-w-3xl mx-auto">
           <p className="font-sans text-xl md:text-2xl text-on-surface-variant leading-relaxed mb-12 font-light">
@@ -114,7 +112,6 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         </div>
       </section>
 
-      {/* Gallery */}
       {project.gallery && project.gallery.length > 0 && (
         <section className="py-16 px-6 md:px-20">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">

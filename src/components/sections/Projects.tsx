@@ -62,7 +62,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
             {/* Content Overlay - moved to bottom-right, no description, single-line title */}
             <div className="absolute inset-0 flex items-end justify-end">
               <div className="max-w-2xl mr-4 md:mr-8 lg:mr-12 mb-4 md:mb-8 lg:mb-12 text-right animate-fade-in-up text-white">
-                <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight font-sans">
+                <h2 className="text-5xl md:text-7xl font-light uppercase tracking-tight leading-tight font-sans text-white mb-8">
                   {project.title}
                 </h2>
                 <div className="flex justify-end pt-5">

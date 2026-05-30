@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import { AppProvider } from "@/components/providers/AppProvider";
 import Header from "@/components/layout/Header";
@@ -7,8 +7,15 @@ import Footer from "@/components/layout/Footer";
 import Loader from "@/components/ui/Loader";
 
 const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
+  variable: "--font-montserrat-next",
+  subsets: ["latin", "vietnamese"],
+});
+
+const notoSerif = Noto_Serif({
+  variable: "--font-serif-next",
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin", "vietnamese"],
 });
 
 export const metadata: Metadata = {
@@ -23,13 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
-      </head>
       <body
-        className={`${montserrat.variable} font-sans antialiased`}
+        className={`${montserrat.variable} ${notoSerif.variable} font-sans antialiased`}
       >
         <AppProvider>
           <Loader />

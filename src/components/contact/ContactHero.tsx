@@ -1,16 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ChevronDown } from "lucide-react";
-
+import Image from "next/image";
 import { BannerItem } from "@/components/sanity-client";
 
-export default function TeamHero({
-  heading = "Đội Ngũ Sáng Tạo",
-  subtext = "Những người tiên phong",
-  imageUrl = "https://lh3.googleusercontent.com/aida-public/AB6AXuDduP-QAyuf_x2JI-K5T2lMMwtasDnzgD8sB9FmUzJZUjE2wXfLMs9K9Ek9En8UtE0Tlc9R1yCYf-DZCZguxzFV0MUqejGezlvYM74crHOmw9jO2p0iOlJGQmrXcgXIDmN-Qi_91VD4Z3LR6XO8KMtqc773qhi_zFMq8g6vYgLuWNbAS3-vsMI1FQLwrspBjINIZcw2-R_0oQ6hQgbCQ8IdBV4ccAe-lzffpavIq5c6yHc1cpG-Slw7_YEPQItbRjERY95k6ihw11x4"
+const DEFAULT_IMAGE = "https://lh3.googleusercontent.com/aida-public/AB6AXuDdMK8kBEk5ftdKOezCFQlG5Sf5IAw_Yr17nhhGyytTxkZeEzXTOAfPZs4b9wSbFpxXTrJ02sMitxE77CUnrNDiJ6NGhaIDZnRViVy2QgX04_cRWi146d_TAd4E0gsjWJvBZLWD7YDtf2fpFRyQ17WXKGFuwe_bLfIwoyAr4svhjfo_Q9RgisoCZB5r0R-TtdvERYj8x4eLBh_HBy_yUhu3ZRZAzqb3pdLuQ59C6eJovHhRqtDzGwzHAJOalDPqjYV8Al5GxnBWo__s";
+
+export default function ContactHero({
+  heading = "Liên Hệ",
+  subtext = "Kết nối cùng không gian tinh bản",
+  imageUrl,
 }: BannerItem) {
+  const src = imageUrl || DEFAULT_IMAGE;
+
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       <motion.div
@@ -19,15 +22,13 @@ export default function TeamHero({
         transition={{ duration: 1.5 }}
         className="absolute inset-0 z-0 bg-neutral-900"
       >
-        {imageUrl && (
-          <Image
-            src={imageUrl}
-            alt={heading}
-            fill
-            priority
-            className="object-cover brightness-50"
-          />
-        )}
+        <Image
+          src={src}
+          alt={heading || "Contact banner"}
+          fill
+          priority
+          className="object-cover grayscale opacity-40"
+        />
         <div className="absolute inset-0 bg-slate-950/40" />
       </motion.div>
       <div className="relative z-10 text-center max-w-4xl px-8">

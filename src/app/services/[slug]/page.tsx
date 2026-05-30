@@ -43,7 +43,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         </div>
         <div className="max-w-7xl mx-auto px-6 md:px-20 relative z-10">
           <div className="max-w-3xl animate-fade-in-up">
-            <span className="text-secondary font-sans mb-6 block tracking-widest uppercase text-xs">DỊCH VỤ KIẾN TRÚC & NỘI THẤT</span>
+            <span className="text-secondary font-sans mb-6 block tracking-[0.4em] uppercase text-xs">DỊCH VỤ KIẾN TRÚC & NỘI THẤT</span>
             <h1 className="font-sans font-light text-5xl md:text-7xl text-white mb-8">{service.title}</h1>
             <div className="h-1 w-24 bg-gradient-to-r from-secondary to-transparent" />
           </div>
