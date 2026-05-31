@@ -91,7 +91,7 @@ export default function TeamSlider({ teamList }: { teamList: TeamMember[] }) {
               <div className="group relative overflow-hidden bg-surface-container-low border border-outline-variant/30 hover:border-secondary/40 transition-all duration-500 rounded-sm h-full flex flex-col justify-between">
                 <div>
                   {/* Avatar Frame */}
-                  <div className="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 relative bg-neutral-800">
+                  <div className="aspect-[3/4] overflow-hidden transition-all duration-700 relative bg-neutral-800">
                     <Image
                       src={member.image}
                       alt={member.name}
