@@ -10,6 +10,7 @@ interface Project {
   category: string;
   image: string;
   heroImage?: string;
+  location?: string;
 }
 
 export const dynamic = "force-dynamic";
@@ -22,7 +23,8 @@ export default async function ProjectsPage() {
       "slug": slug.current,
       "category": serviceType,
       "image": heroImage.asset->url,
-      "heroImage": heroImage.asset->url
+      "heroImage": heroImage.asset->url,
+      location
     }
   `;
 
