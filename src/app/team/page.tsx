@@ -46,7 +46,7 @@ export default async function TeamPage() {
           {teamList.map((member, idx) => (
             <AnimatedSection key={member._id} direction="up" delay={0.1 * (idx % 3)}>
               <div className="glass-card overflow-hidden group h-full">
-                <div className="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 relative">
+                <div className="aspect-[3/4] overflow-hidden transition-all duration-700 relative">
                   <Image
                     src={member.image}
                     alt={member.name}
